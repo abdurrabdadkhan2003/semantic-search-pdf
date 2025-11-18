@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Semantic PDF Search - Neon RAG</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container neon__glow">
+        <h1 class="neon__title">Semantic PDF RAG Search</h1>
+        <form id="uploadForm" enctype="multipart/form-data" style="margin-bottom:16px;">
+            <input type="file" id="pdfFile" accept=".pdf" />
+            <button type="submit" class="neon__button">Upload PDF</button>
+            <span id="uploadStatus"></span>
+        </form>
+        <form id="searchForm">
+            <input class="neon__input" type="text" id="query" placeholder="Ask me anything..." autocomplete="off" />
+            <button type="submit" class="neon__button">🔍 Search</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <div class="neon__anim"></div>
+    <script>
+        function glowFlash() {
+            const elem = document.querySelector('.container');
+            elem.classList.add('flash');
+            setTimeout(() => elem.classList.remove('flash'), 900);
+        }
+        document.getElementById('uploadForm').onsubmit = async function(e) {
+            e.preventDefault();
+            let fileInput = document.getElementById('pdfFile');
+            if (!fileInput.files.length) return;
+            let formData = new FormData();
+            formData.append('pdf', fileInput.files[0]);
+            let resp = await fetch('/upload', { method: 'POST', body: formData });
+            let msg = await resp.text();
+            document.getElementById('uploadStatus').textContent = msg;
+            glowFlash();
+        }
+        const form = document.getElementById('searchForm');
+        form.onsubmit = async function(e) {
+            e.preventDefault();
+            glowFlash();
+            const q = document.getElementById('query').value;
+            const resDiv = document.getElementById('results');
+            resDiv.innerHTML = "<div class='pulse'><small>Loading...</small></div>";
+            const resp = await fetch('/search', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({query: q})
+            });
+            const data = await resp.json();
+            resDiv.innerHTML = data.map((r, i) =>
+                `<div class="res anim-fade-in"><b class="neon__answer">[${i+1}]</b> ${r.text} </div>`
+            ).join("");
+        }
+    </script>
+</body>
+</html>

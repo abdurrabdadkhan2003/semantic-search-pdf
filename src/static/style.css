@@ -1,0 +1,148 @@
+body {
+    margin:0;
+    padding:0;
+    background: #191927;
+    color: #ECF0FF;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    margin: 50px auto 40px auto;
+    max-width: 630px;
+    border-radius: 18px;
+    background: rgba(22,26,38,0.98);
+    box-shadow: 0 0 48px #19f9f6, 0 0 16px #4c007d66;
+    padding: 38px 30px 33px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: neonGlow 3s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0%, 100% { box-shadow: 0 0 32px #20e3fb, 0 0 38px #5c07b6, 0 0 10px #fa1eae; }
+    50% { box-shadow: 0 0 64px #fa1eae, 0 0 32px #b07cff, 0 0 20px #20e3fb; }
+}
+
+.flash {
+    animation: flashColor 0.6s linear 1;
+}
+
+@keyframes flashColor {
+    0% { background-color: #5318afcc; }
+    80% { background-color: #20e3fbcc; }
+    100% { background-color: rgba(22,26,38,0.96); }
+}
+
+h1.neon__title {
+    font-size: 2.2em;
+    color: #23ffe6;
+    text-shadow: 0 0 24px #b07cff, 0 0 18px #fabaff;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    animation: pulseTitle 3s infinite;
+}
+
+@keyframes pulseTitle {
+    0%,100% {color:#20e3fb;}
+    40% {color:#fa1eae;}
+    80% {color:#fabaff;}
+}
+
+.neon__input {
+    background: rgba(17,23,39,0.93);
+    color: #fabaff;
+    border: 1.5px solid #20e3fb;
+    border-radius: 10px;
+    padding: 10px 17px;
+    font-size: 1.1em;
+    width: 60%;
+    outline: none;
+    transition: box-shadow .19s, border.2s;
+    box-shadow: 0 0 16px #20e3fb44;
+}
+
+.neon__input:focus {
+    border-color: #fa1eae;
+    box-shadow: 0 0 22px #fa1eae88;
+}
+
+.neon__button {
+    background: linear-gradient(92deg,#20e3fb 42%,#fa1eae 100%);
+    color: #161623;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left:8px;
+    box-shadow: 0 0 16px #20e3fb77;
+    transition: background .2s, box-shadow .3s, transform .15s;
+}
+
+.neon__button:hover, .neon__button:focus {
+    background: linear-gradient(88deg,#fa1eae 0%,#23ffe6 99%);
+    box-shadow: 0 0 12px #fa1eae66;
+    transform: scale(1.06);
+}
+
+.res {
+    background: rgba(35,13,53,0.97);
+    border-left: 4px solid #20e3fb;
+    margin: 14px 0;
+    padding: 18px 13px 15px 15px;
+    border-radius: 7px;
+    box-shadow: 0 0 17px #fa1eae55;
+    color: #fabaff;
+    text-align: left;
+    font-size: 1.13em;
+    opacity: 0.98;
+    animation: animFadeIn .7s;
+}
+
+@keyframes animFadeIn {
+    from { opacity: 0; transform: translateY(24px);}
+    to   { opacity: 1; transform: translateY(0);}
+}
+
+.anim-fade-in {
+    animation: animFadeIn .85s;
+}
+
+.neon__answer {
+    color: #23ffe6;
+    text-shadow: 0 0 8px #fa1eae99,0 0 20px #20e3fbbb;
+    font-size: 1.11em;
+}
+
+.pulse {
+    animation: pulseLoading 1.1s infinite;
+    color:#fa1eae;
+    font-weight:bold;
+}
+
+@keyframes pulseLoading {
+    0%{opacity:.7;}
+    50%{opacity:.99;}
+    100%{opacity:.75;}
+}
+
+#results {
+    transition: opacity .33s;
+    min-height:28px;
+}
+
+.neon__anim {
+    pointer-events:none;
+    position:fixed;
+    top:0;left:0;width:100vw;height:100vh;
+    z-index:0;
+    background:radial-gradient(circle at 54% 22%, #32325d 0px, transparent 360px),
+        radial-gradient(circle at 18% 100%, #20e3fb33 0px, transparent 420px),
+        radial-gradient(circle at 95% 15%, #fa1eae33 0px, transparent 300px);
+    box-shadow: 0 0 160px #20e3fb22 inset;
+    opacity: .52;
+}
