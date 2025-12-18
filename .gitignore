@@ -1,5 +1,117 @@
+# Python Virtual Environment
+venv/
+env/
 .venv/
+.env
+
+# Python Cache and Compiled Files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+.project
+.pydevproject
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+tox/
+.tox/
+
+# ChromaDB and Vector Database
 chroma_db/
+chroma_db/**
+
+# Data and Documents
 data/
+data/**
+*.pdf
+!README.pdf
+
+# Logs
+*.log
+logs/
+*.pot
+
+# Environment and Configuration
+.env.local
+.env.*.local
+config.local.py
+
+# Flask
+instance/
+.webassets-cache
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# OS Specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Node modules (if using npm for frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary Files
+*~
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*#
+
+# IDE Specific
+.vscode/settings.json
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/tasks.json
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/runConfigurations.xml
+
+# OS generated files
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Experimental notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Build and Distribution
+build/
+dist/
+*.egg-info/
+
+# Optional
+.cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
